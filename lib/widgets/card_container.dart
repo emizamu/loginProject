@@ -9,7 +9,7 @@ class CardContainer extends StatelessWidget {
     });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // Se crea el Container para el formulario
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Container(
@@ -21,7 +21,7 @@ class CardContainer extends StatelessWidget {
     );
   }
 
-  BoxDecoration _createCardShape() => BoxDecoration(
+  BoxDecoration _createCardShape() => BoxDecoration( // Decoracion para el fondo del formulario
           color: Colors.white,
           borderRadius: BorderRadius.circular(25),
           boxShadow: const [

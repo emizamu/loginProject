@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+// Solamente simulamos un HomeScreen para el boton de Inicio
+
+class HomeScreen extends StatelessWidget { 
    
   const HomeScreen({Key? key}) : super(key: key);
   

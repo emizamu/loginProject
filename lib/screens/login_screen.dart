@@ -11,17 +11,17 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: AuthBackground(
-            child: SingleChildScrollView(
+            child: SingleChildScrollView(     // Genera el efecto scroll
       child: Column(
         children: [
-          const SizedBox(height: 250), // Le da espacio hacia abajo
-          CardContainer(
+          const SizedBox(height: 250),       // Le da espacio hacia abajo
+          CardContainer(                    // * Se le pasa por parametro un child
               child: Column(
             children: [
               const SizedBox(height: 10),
               Text('Login', style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: 30),
-              ChangeNotifierProvider(
+              ChangeNotifierProvider( // utiliza el provider y llama al loginForm dentro
                 create: (_) => LoginFormProvider(),
                 child: _LoginForm(),
               )
@@ -47,16 +47,16 @@ class _LoginForm extends StatelessWidget {
         key: loginForm.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(children: [
-          TextFormField(
+          TextFormField(                                  // Input para ingresar el mail
             autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.emailAddress,     // Abre teclado con @
             decoration: InputDecorations.authInputDecoration(
                 hintText: 'alguien@gmail.com',
                 labelText: 'Correo electronico',
                 prefixIcon: Icons.alternate_email_sharp),
             onChanged: (value) => loginForm.email = value,
             validator: (value) {
-              String pattern =
+              String pattern =                            //Patron para email y contraseña
                   r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
               RegExp regExp = RegExp(pattern);
               return regExp.hasMatch(value ?? '')
@@ -65,7 +65,7 @@ class _LoginForm extends StatelessWidget {
             },
           ),
           const SizedBox(height: 30),
-          TextFormField(
+          TextFormField(                                    // Input para la contraseña
               autocorrect: false,
               obscureText: true,
               keyboardType: TextInputType.emailAddress,
@@ -80,13 +80,14 @@ class _LoginForm extends StatelessWidget {
                     : 'La contraseña debe ser mayor a 5 caracteres';
               }),
           const SizedBox(height: 30),
-          MaterialButton(
+          MaterialButton(                                         // Se crea el boton de inicio
             onPressed: loginForm.isLoading ? null : () async {
-                    FocusScope.of(context).unfocus(); // Quita el teclado una vez se apreta el boton
+                    FocusScope.of(context).unfocus();                 // Quita el teclado una vez se apreta el boton
                     if (!loginForm.isValidForm()) return;
                     loginForm.isLoading = true;
                     await Future.delayed(const Duration(seconds: 2)); //Simula tiempo de espera
                     loginForm.isLoading = false;
+                    // ignore: use_build_context_synchronously
                     Navigator.pushReplacementNamed(context, 'home');
                   },
             shape:

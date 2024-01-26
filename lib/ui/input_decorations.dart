@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InputDecorations {
 
-  static InputDecoration authInputDecoration({
+  static InputDecoration authInputDecoration({ // Maneja el diseño de los inputs de contraseña e emial.
     required String hintText,
     required String labelText,
     IconData? prefixIcon}) {

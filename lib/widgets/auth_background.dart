@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Este widget contempla fondo violeta e Icono del encabezado.
+
 class AuthBackground extends StatelessWidget {
   final Widget child;
 
@@ -16,13 +18,13 @@ class AuthBackground extends StatelessWidget {
         children: [
           _PurpleBox(), 
           _HeaderIcon(),
-          this.child,]
+          child]
       ),
     );
   }
 }
 
-class _HeaderIcon extends StatelessWidget {
+class _HeaderIcon extends StatelessWidget { // Se crea espacio para el Icono de Persona
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,7 +37,7 @@ class _HeaderIcon extends StatelessWidget {
   }
 }
 
-class _PurpleBox extends StatelessWidget {
+class _PurpleBox extends StatelessWidget { // Fondo violeta
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,8 +47,8 @@ class _PurpleBox extends StatelessWidget {
       height: size.height * 0.4,
       decoration: _purpleBackground(),
       child: Stack(
-        children: [
-          Positioned(top: 90, left: 30, child: _Bubble()),
+        children: [                     // Se llama a la burbujas y las posiciona
+          Positioned(top: 90, left: 30, child: _Bubble()), 
           Positioned(top: 40, left: -30, child: _Bubble()),
           Positioned(top: -50, right: -20, child: _Bubble()),
           Positioned(bottom: -50, left: 10, child: _Bubble()),
@@ -56,14 +58,14 @@ class _PurpleBox extends StatelessWidget {
     );
   }
 
-  BoxDecoration _purpleBackground() => const BoxDecoration(
+  BoxDecoration _purpleBackground() => const BoxDecoration(  // Degrade para fondo violeta
           gradient: LinearGradient(colors: [
         Color.fromRGBO(63, 63, 156, 1),
         Color.fromRGBO(90, 70, 178, 1)
       ]));
 }
 
-class _Bubble extends StatelessWidget {
+class _Bubble extends StatelessWidget { // Creacion de burbujas
   @override
   Widget build(BuildContext context) {
     return Container(
